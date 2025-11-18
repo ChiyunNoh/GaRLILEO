@@ -1,0 +1,52 @@
+Configor:
+  DataStream:
+    IMUTopic: /imu
+    IMUMsgType: SENSOR_IMU
+    RadarTopic: /ti_mmwave/radar_scan_pcl_0
+    LegVelTopic : /leg_velocity
+    FootTopic : /spot/status/feet
+    RadarMsgType: GARLILEO
+    OutputPath: /path/to/your/dataset/results  # please set your output path here
+    CalibParam:
+      SO3_RtoB: 
+        qx: 0.0192997
+        qy: 0.0176849
+        qz: -0.6753587
+        qw: 0.7370247 
+      POS_RinB:
+        r0c0: -0.062
+        r1c0: -0.0112
+        r2c0: 0.03663
+      SO3_BtoL:  
+        qx: 0.0185099
+        qy: 0.0185099
+        qz: 0.7068645
+        qw: 0.7068645
+      POS_BinL:
+        r0c0: 0.143
+        r1c0: 0 
+        r2c0: 0.0542
+      TIME_OFFSET_RtoB: 0.0
+  Prior:
+    GravityNorm: 9.8
+    GravityDirection : -1.0 # when z axis of IMU is upward, use -1.0; when downward, use 1.0
+    SO3SplineKnotDist: 0.05
+    VelSplineKnotDist: 0.05
+    GravSplineKnotDist : 0.05
+    AcceWeight: 170.68
+    AcceBiasRandomWalk: 4.0E-4
+    GyroWeight: 5730.66
+    GyroBiasRandomWalk: 2.0E-5
+    RadarWeight: 6000.00
+    CauchyLossForRadarFactor: 0.1
+    RotGravWeight: 10.00
+    GravityWeight: 100.00
+    LegWeight: 1500.00
+  Preference:
+    IMUMsgQueueSize: 400
+    RadarMsgQueueSize: 200
+    LegMsgQueueSize: 800
+    FootMsgQueueSize : 800
+    # the rate of incremental optimization
+    IncrementalOptRate: 50
+    OutputResultsWithTimeAligned: false

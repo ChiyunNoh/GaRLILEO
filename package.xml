@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>garlileo</name>
+  <version>0.1.0</version>         
+  <description>Gravity-aligned Radar-Leg-Inertial Enhanced Odometry</description>
+
+  <maintainer email="gch06208@snu.ac.kr">chiyun</maintainer>
+  <license>MIT</license>         
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+
+  <depend>spot_msgs</depend>
+
+  <depend>rosbag2_cpp</depend>
+
+  <build_depend>rosidl_default_generators</build_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+
