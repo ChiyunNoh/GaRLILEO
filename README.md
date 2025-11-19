@@ -32,10 +32,11 @@
     <small><sup>2</sup>Robotics and AI Institute (RAI)</small>
     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
   </p>
-  
+
 <p align="center">
-  <img width="700" alt="GaRLILEO_teaser" src="https://github.com/user-attachments/assets/0e4f8173-9fba-4e34-9037-f75c0cdff827" />
-</p>  
+  <img src="fig/GaRLILEO_teaser.png" width="700" />
+</p>
+
 This repository contains the code for <b>GaRLILEO: Gravity-aligned Radar-Leg-Inertial Enhanced Odometry</b>. 
 
 <!-- TABLE OF CONTENTS -->
@@ -78,7 +79,7 @@ Deployment of legged robots for navigating challenging terrains (eg. stairs, slo
 
 ## Dataset
 <p align="center">
-  <img width="859" height="309" alt="Dataset_fig" src="https://github.com/user-attachments/assets/7c271e7a-5dcd-44fe-96c8-cac0558766df" />
+  <img src="fig/GaRLILEO_system.png" width="859" />
 </p>
 The <b><em>GaRLILEO Dataset</em></b> contains diverse sequences captured by a legged robot equipped with a millimeter-wave radar, IMU, and leg kinematics sensors. It spans indoor and outdoor environments with various elevation profiles, loop trajectories, and motion dynamics. For more details, please refer to the <a href="https://garlileo.github.io/GaRLILEO/">Project Page</a>.
 
