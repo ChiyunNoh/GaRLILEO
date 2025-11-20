@@ -98,7 +98,7 @@ The code is tested on:
 ```bash
 cd ~/ros2_ws
 git clone --recursive https://github.com/ChiyunNoh/GaRLILEO.git
-git clone https://github.com/SangwooJung98/spot_roll_GaRLILEO.git
+git clone https://github.com/SangwooJung98/SPOT_ego_Velocity.git
 cd GaRLILEO
 chmod +x build_thirdparty.sh
 ./build_thirdparty.sh
@@ -123,7 +123,7 @@ ros2 launch garlileo {the-launch-filename}.launch.py
 ```bash
 cd ~/ros2_ws
 git clone --recursive https://github.com/ChiyunNoh/GaRLILEO.git
-git clone https://github.com/SangwooJung98/spot_roll_GaRLILEO.git
+git clone https://github.com/SangwooJung98/SPOT_ego_Velocity.git
 ```
 
 > [!IMPORTANT]  
