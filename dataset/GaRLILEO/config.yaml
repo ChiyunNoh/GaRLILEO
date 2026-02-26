@@ -28,7 +28,7 @@ Configor:
         r2c0: 0
       TIME_OFFSET_RtoB: 0.0
   Prior:
-    GravityNorm: 9.8
+    GravityNorm: 9.81
     GravityDirection : -1.0 # when z axis of IMU is upward, use -1.0; when downward, use 1.0
     SO3SplineKnotDist: 0.05
     VelSplineKnotDist: 0.05
@@ -37,11 +37,11 @@ Configor:
     AcceBiasRandomWalk: 4.0E-4
     GyroWeight: 5730.66
     GyroBiasRandomWalk: 2.0E-5
-    RadarWeight: 700.00
+    RadarWeight: 300.00
     CauchyLossForRadarFactor: 0.1
     RotGravWeight: 10.00
-    GravityWeight: 300.00
-    LegWeight: 5000.00
+    GravityWeight: 100.00
+    LegWeight: 1000.00
   Preference:
     IMUMsgQueueSize: 400
     RadarMsgQueueSize: 200

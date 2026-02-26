@@ -405,20 +405,20 @@ namespace garlileo {
                 (*gravity)(0), (*gravity)(1), (*gravity)(2)
         );
         for (int i = 0; i < static_cast<int>(so3Spline.GetKnots().size()); ++i) {
-            so3Spline.GetKnot(i) = SO3_RefToW * so3Spline.GetKnot(i) * SO3_RefToW.inverse();
+            so3Spline.GetKnot(i) = SO3_RefToW * so3Spline.GetKnot(i);
         }
-        for (int i = 0; i < static_cast<int>(velSpline.GetKnots().size()); ++i) {
-            velSpline.GetKnot(i) = SO3_RefToW * velSpline.GetKnot(i);
-        }
-        const auto &SO3_RtoB = configor->dataStream.CalibParam.SO3_RtoB;
-        const Eigen::Vector3d &POS_RinB = configor->dataStream.CalibParam.POS_RinB;
+        // for (int i = 0; i < static_cast<int>(velSpline.GetKnots().size()); ++i) {
+        //     velSpline.GetKnot(i) = SO3_RefToW * velSpline.GetKnot(i);
+        // }
+        // const auto &SO3_RtoB = configor->dataStream.CalibParam.SO3_RtoB;
+        // const Eigen::Vector3d &POS_RinB = configor->dataStream.CalibParam.POS_RinB;
 
-        const auto &SO3_BtoL = configor->dataStream.CalibParam.SO3_BtoL;
+        // const auto &SO3_BtoL = configor->dataStream.CalibParam.SO3_BtoL;
 
-        configor->dataStream.CalibParam.SO3_RtoB = SO3_RefToW * SO3_RtoB;
-        configor->dataStream.CalibParam.POS_RinB = SO3_RefToW * POS_RinB;
+        // configor->dataStream.CalibParam.SO3_RtoB = SO3_RefToW * SO3_RtoB;
+        // configor->dataStream.CalibParam.POS_RinB = SO3_RefToW * POS_RinB;
 
-        configor->dataStream.CalibParam.SO3_BtoL = SO3_BtoL * SO3_RefToW.inverse();
+        // configor->dataStream.CalibParam.SO3_BtoL = SO3_BtoL * SO3_RefToW.inverse();
     }
 
     void StateManager::MarginalizationInInit(const Estimator::Ptr &estimator) {
@@ -546,14 +546,14 @@ namespace garlileo {
         for (auto iter1 = imuData.cbegin(); iter1 != imuData.cend(); ++iter1){
             Eigen::Quaternion<double> ori = (*iter1)->GetOrientation();
             Sophus::SO3d so3(ori);
-            Sophus::SO3d gravity_align = SO3_RefToW * so3 * SO3_RefToW.inverse();
+            Sophus::SO3d gravity_align = SO3_RefToW * so3;
             Eigen::Quaternion<double> quat_g_align = gravity_align.unit_quaternion();
             (*iter1)->SetOrientation(quat_g_align);
 
-            Eigen::Vector3d gyro((*iter1)->GetGyro());
-            Eigen::Vector3d gravity_align_gyro = SO3_RefToW * gyro;
+            // Eigen::Vector3d gyro((*iter1)->GetGyro());
+            // Eigen::Vector3d gravity_align_gyro = SO3_RefToW * gyro;
 
-            (*iter1)->SetGyro(gravity_align_gyro);
+            // (*iter1)->SetGyro(gravity_align_gyro);
         }
         
 
@@ -621,7 +621,7 @@ namespace garlileo {
                 for (auto iter = iter1; iter != std::next(iter2); ++iter) { 
                     const auto &frame = *iter;
                     double t = frame->GetTimestamp();
-                    velData.emplace_back(t, so3Spline.Evaluate(t1).matrix().transpose() * so3Spline.Evaluate(t).matrix() * (SO3_RefToW * frame->GetAcce()-*ba));
+                    velData.emplace_back(t, so3Spline.Evaluate(t1).matrix().transpose() * so3Spline.Evaluate(t).matrix() * (frame->GetAcce()-*ba));
                     before_t = t;
                 }
                 Eigen::Vector3d velPIM = TrapIntegrationOnce(velData);

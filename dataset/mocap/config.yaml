@@ -28,7 +28,7 @@ Configor:
         r2c0: 0.0542
       TIME_OFFSET_RtoB: 0.0
   Prior:
-    GravityNorm: 9.8
+    GravityNorm: 9.81 
     GravityDirection : -1.0 # when z axis of IMU is upward, use -1.0; when downward, use 1.0
     SO3SplineKnotDist: 0.05
     VelSplineKnotDist: 0.05

@@ -66,9 +66,9 @@ namespace garlileo {
         stateMagrThread->join();
     }
 
-        void GaRLILEO::save_pose_tum(const std::string& filename, 
-                   const std::vector<std::pair<double, Eigen::Vector3d>>& velocity,
-                   const std::vector<std::pair<double, Sophus::SO3d>>& quatVec) 
+    void GaRLILEO::save_pose_tum(const std::string& filename, 
+                const std::vector<std::pair<double, Eigen::Vector3d>>& velocity,
+                const std::vector<std::pair<double, Sophus::SO3d>>& quatVec) 
     {
         Eigen::Vector3d position = Eigen::Vector3d::Zero();
         assert(velocity.size() == quatVec.size());
@@ -84,9 +84,9 @@ namespace garlileo {
             double dt = t - t_prev;
             t_prev = t;
 
-            const Eigen::Vector3d& vel_body = stateMagr->GetSO3_RefToW().matrix().transpose() * velocity[i].second;
+            const Eigen::Vector3d& vel_body = velocity[i].second;
             const Sophus::SO3d& so3 = quatVec[i].second; //R_wb
-            Eigen::Matrix3d R_wb = stateMagr->GetSO3_RefToW().matrix().transpose() * so3.matrix() * stateMagr->GetSO3_RefToW().matrix();  // body to First IMU(R_I0w * R_wb)
+            Eigen::Matrix3d R_wb = stateMagr->GetSO3_RefToW().matrix().transpose() * so3.matrix();  // body to First IMU(R_I0w * R_wb)
 
             Eigen::Vector3d vel_world = R_wb * vel_body;
             position += vel_world * dt;
@@ -285,10 +285,10 @@ namespace garlileo {
         axis_path.pose.pose.position.x = pose_stamped.pose.position.x;
         axis_path.pose.pose.position.y = pose_stamped.pose.position.y;
         axis_path.pose.pose.position.z = pose_stamped.pose.position.z;
-        axis_path.pose.pose.orientation.x = state->SO3_CurToRef.unit_quaternion().x();
-        axis_path.pose.pose.orientation.y = state->SO3_CurToRef.unit_quaternion().y();
-        axis_path.pose.pose.orientation.z = state->SO3_CurToRef.unit_quaternion().z();
-        axis_path.pose.pose.orientation.w = state->SO3_CurToRef.unit_quaternion().w();
+        axis_path.pose.pose.orientation.x = pose_stamped.pose.orientation.x;
+        axis_path.pose.pose.orientation.y = pose_stamped.pose.orientation.y;
+        axis_path.pose.pose.orientation.z = pose_stamped.pose.orientation.z;
+        axis_path.pose.pose.orientation.w = pose_stamped.pose.orientation.w;
 
         odomPublisher->publish(axis_path);
 
