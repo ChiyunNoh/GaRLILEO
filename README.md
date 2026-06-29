@@ -12,7 +12,7 @@
     </a>
   </p>
 
-  <h3 align="center"><a href="https://arxiv.org/abs/2511.13216">Arxiv</a> | <a href="https://garlileo.github.io/GaRLILEO/">Project</a> | <a href="https://www.youtube.com/watch?v=b2erEX8x-Rk">Video</a> | <a href="https://garlileo.github.io/GaRLILEO/">Dataset</a></h3>
+  <h3 align="center"><a href="https://arxiv.org/abs/2511.13216">Arxiv</a> | <a href="https://garlileo.github.io/GaRLILEO/">Project</a> | <a href="https://www.youtube.com/watch?v=SgGc2kqXyaA">Video</a> | <a href="https://garlileo.github.io/GaRLILEO/">Dataset</a></h3>
   <div align="center"></div>
 </p>
   <p align="center">
