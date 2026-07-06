@@ -69,7 +69,8 @@ This repository contains the code for <b>GaRLILEO: Gravity-aligned Radar-Leg-Ine
 
 ## Update
 [19/11/2025]: Full code of GaRLILEO released.
-[30/04/2026]: GaRLILEO is acceptd to IJRR. 
+
+[30/04/2026]: GaRLILEO is accepted to IJRR. 
 
 ## Abstract
 
